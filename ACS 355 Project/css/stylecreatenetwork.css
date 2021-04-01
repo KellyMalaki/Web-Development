@@ -1,0 +1,168 @@
+:root{
+  --gray: #F2F2F2;
+  --red: #bc0000;
+  --green: #006600;
+  --blue: #112385;
+  }
+
+  .navbar{
+    background: white;
+    padding: 0px;
+}
+
+.primary-nav li a{
+    text-decoration: none;
+    color: black;
+    display: block;
+    padding: .5em;
+    font-size: 1.3em;
+    margin-right: 100px;
+
+}
+
+.primary-nav li a:hover{
+    font-weight: bold;
+}
+
+.navbar nav{
+
+
+    position: unset;
+    width: 100%;
+    height: auto;
+}
+
+.primary-nav{
+    display: flex;
+    list-style-type: none;
+}
+
+li.current a{
+    font-weight: bold;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+
+
+
+    background: url(../Images/cover.jpg);
+   background-size: cover; 
+   font-family: sans-serif;
+ background-repeat: no-repeat;
+}
+
+.networkbox{
+    border-radius: 5px;
+    height: 500px;
+    width: 300px;
+  background-color: white;
+  opacity: 0.9;
+  margin: auto;
+  }
+
+  .logo{
+    text-decoration: none;
+    font-size: 1.3em;
+    padding-left: 1em;
+  }
+
+  h2, form{
+    text-align: center;
+  }
+  h2{
+    color: var(--red);
+  }
+
+  input[type="text"], input[type="password"], .nettype, .prvcymode
+{
+    padding: .25em;
+    font-size: 20px;
+    border-radius: 5px;
+    border-style: groove;
+    border-width: 3px;
+    background: white;
+    height: 30px;
+    color: black;
+    font-size: 17px;
+    margin-bottom: 10px;
+    border-color: #d1cfcf;
+}
+
+textarea
+{
+    font-size: 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, textarea:focus
+{
+    border-color: var(--red);
+    box-shadow: 0 0 5px var(--red);
+    outline: none;
+}
+
+  .networkbox .logintoaccount{
+    margin: auto;
+    text-align: center;
+    display: block;
+    border: none;
+      outline: none;
+      width: 200px;
+      height: 30px;
+    background-position: 2cm;
+      background: var(--green);
+      color: white;
+      font-size: 18px;
+    text-decoration: none;
+    border-radius: 5px;
+    padding-top: 10px;
+    margin-bottom: 20px;
+  
+  }
+
+  .networkbox .logintoaccount:hover{
+    cursor:pointer;
+      background: #7bdb90;
+      color: #000;
+  }
+
+
+
+
+
+.networkbox input[type="submit"]
+{
+    width: 150px;
+    height: 30px;
+    text-decoration: none;
+    background: var(--red);
+    margin-top: 30px;
+    margin-bottom: 50px;
+      border: none;
+      outline: none;
+      color:#fff;
+      font-size: 18px;
+      border-radius: 2px;
+      padding-top: 10px;
+      display: block;
+      text-align: center;
+      margin: auto;
+      
+  
+  }
+
+  .networkbox input[type="submit"]:hover
+{
+    cursor:pointer;
+    background: #c75f5f;
+    color: #000;
+}
+
+.discript
+{
+  font-size: 20px;
+  margin-left: 10px;
+}

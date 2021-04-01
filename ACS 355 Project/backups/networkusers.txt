@@ -1,0 +1,6 @@
+CREATE TABLE networkusers(
+	netusers int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	usersId int(11) NOT NULL,
+    NetworksId int(11) NOT NULL,
+    userstate varchar(128) NOT NULL
+);

@@ -1,0 +1,100 @@
+:root{
+    --gray: #F2F2F2;
+    --red: #bc0000;
+    --green: #006600;
+    --blue: #112385;
+    }
+    
+    
+    body{
+        background: var(--gray);
+    }
+    
+    .navbar{
+        background: white;
+        padding: 0px;
+    }
+    
+    .primary-nav li a{
+        text-decoration: none;
+        color: black;
+        display: block;
+        padding: .5em;
+        font-size: 1.3em;
+        margin-right: 100px;
+    
+    }
+    
+    .primary-nav li a:hover{
+        font-weight: bold;
+    }
+    
+    .navbar nav{
+    
+    
+        position: unset;
+        width: 100%;
+        height: auto;
+    }
+    
+    .primary-nav{
+        display: flex;
+        list-style-type: none;
+    }
+    
+    li.current a{
+        font-weight: bold;
+    }
+
+    .chatbar{
+    background: white;
+    margin-bottom: 20px;
+    padding: 10px;
+    width: 700px;
+    border-radius: 10px;
+    }
+
+    .typer{
+margin-top: 0px;
+padding-top: 5px;
+font-size: 20px;
+font-weight: bold;
+color: var(--blue);
+    }
+
+.message{
+font-size: 17px;
+}
+#themessage{
+border: none;
+border-radius: 10px;
+color: ;
+font-size: 17px;
+}
+
+input[type="submit"]
+{
+  margin-top: 15px;
+  margin-bottom: 10px;
+    border: none;
+    outline: none;
+    width: 150px;
+    height: 40px;
+    background: var(--green);
+    color:#fff;
+    font-size: 18px;
+    border-radius: 10px;
+}
+
+input[type="submit"]:hover
+{
+    cursor:pointer;
+    background: #81de88;
+    color: #000;
+}
+
+.messagesent{
+color: var(--green);
+font-weight: bold;
+
+}

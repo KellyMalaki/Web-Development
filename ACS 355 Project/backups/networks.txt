@@ -1,0 +1,9 @@
+CREATE TABLE networks(
+	NetworksId int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    NetworksName varchar(128) NOT NULL,
+    NetworksType varchar(128) NOT NULL,
+    NetworksPrivacy varchar(128) NOT NULL,
+    Networksdescription varchar(128) NOT NULL,
+    NetworksPwd varchar(128) NOT NULL
+    
+);

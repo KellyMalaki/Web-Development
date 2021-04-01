@@ -1,0 +1,7 @@
+CREATE TABLE messages(
+    messageid int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	usersId int(11)  NOT NULL,
+    NetworksId int(11) NOT NULL,
+    themessage varchar(200) NOT NULL,
+    datetime TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
