@@ -16,9 +16,3 @@ function home(){
          document.getElementById("login").classList.remove('current');
          document.getElementById("network").classList.remove('current');
     }
-    function network(){
-        document.getElementById("network").classList.add('current');
-        document.getElementById("home").classList.remove('current');
-         document.getElementById("signin").classList.remove('current');
-         document.getElementById("login").classList.remove('current');
-    }

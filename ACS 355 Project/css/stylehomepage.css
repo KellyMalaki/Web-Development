@@ -8,20 +8,29 @@
     
     body{
         background: var(--gray);
+        margin: 0px;
     }
-    
+
+.bodyholder{
+    margin: 15px;
+}
+
+    .primary-nav{
+        margin: 0px;
+    }
     .navbar{
         background: white;
-        padding: 0px;
+        padding-bottom: 20px;
     }
+
     
     .primary-nav li a{
         text-decoration: none;
         color: black;
-        display: block;
+        display: inline;
         padding: .5em;
         font-size: 1.3em;
-        margin-right: 100px;
+        margin-right: 65px;
     
     }
     
@@ -43,6 +52,26 @@
     }
     
     li.current a{
+        font-weight: bold;
+    }
+
+    .welcomeuser{
+        color: var(--green);
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .mynetworkstag{
+        font-size: 1.5em;
+        color: var(--blue);
+    }
+
+    .networkclickable{
+        text-decoration: none;
+    }
+
+    .networkclickable:hover{
+        background: #f2dcfc;
         font-weight: bold;
     }
 
@@ -68,13 +97,12 @@ font-size: 17px;
 #themessage{
 border: none;
 border-radius: 10px;
-color: ;
 font-size: 17px;
 }
 
-input[type="submit"]
+input[name="send"]
 {
-  margin-top: 15px;
+  margin-top: 15px; 
   margin-bottom: 10px;
     border: none;
     outline: none;
@@ -86,7 +114,7 @@ input[type="submit"]
     border-radius: 10px;
 }
 
-input[type="submit"]:hover
+input[name="send"]:hover
 {
     cursor:pointer;
     background: #81de88;
@@ -97,4 +125,267 @@ input[type="submit"]:hover
 color: var(--green);
 font-weight: bold;
 
+}
+.mynetworks{
+    border-radius: 10px;
+    padding: 10px 5px;
+    width: 600px;
+    background: white;
+}
+.line{
+    margin-right: 10px;
+    margin-left: 5px;
+    border-bottom: 1px solid #ccc;
+    display: block;
+}
+.networkclickable .networks{
+    
+    font-size: 20px;
+    color: var(--blue);
+}
+
+.searchbar{
+    
+    margin-bottom: 10px;
+}
+
+.line2{
+    margin-right: 10px;
+    margin-left: 5px;
+    border-bottom: 1.8px solid #a6a6a6;
+    display: block; 
+}
+
+input[name="searchtext"]{
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 0px;
+    width: 250px;
+    font-size: 18px;
+}
+
+input[type="image"]{
+    height: auto;
+    width: 28px;
+    margin-left: 10px;
+}
+.networkclickable .discription{
+    font-size: 17px;
+    color: black;
+}
+
+.networkname{
+    color: var(--red);
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.networkclickable .networktype{
+    color: black;
+    font-weight: normal;
+}
+
+.userdetailsdiv{
+    background: white;
+    margin-left: 10px;
+    padding-left: 20px;
+    width: 600px;
+}
+
+.upformlabels{
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.upforminputtext{
+    border: none;
+    outline: none;
+    padding: 0px;
+    font-size: 16px;
+    padding: 2.5px;
+    border-radius: 3px;
+}
+.upforminputtext:focus{
+    background: var(--gray);
+}
+
+form{
+    margin-bottom: 20px;
+}
+
+.upformsubmit{
+    background: var(--gray);
+    outline: none;
+    border: none;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 3px;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.upformsubmit:hover{
+padding: 11px;
+
+cursor: pointer;
+}
+
+.bg-modal{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    
+}
+
+.bg-modal2{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+
+}
+
+.modal-content{
+    width: 500px;
+    height: 300px;
+    background: var(--gray);
+    border-radius: 5px;
+    position: relative;
+
+}
+
+.popupclose{
+    font-weight: bold;
+    font-size: 40px;
+    position: absolute;
+    top: 10px;;
+    right: 15px;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+.modal-content2{
+    width: 500px;
+    height: 300px;
+    background: white;
+    border-radius: 5px;
+    position: relative;
+
+}
+
+.popupclose2{
+    font-weight: bold;
+    font-size: 40px;
+    position: absolute;
+    top: 10px;;
+    right: 15px;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+.networkholderpopup2{
+    margin-left: 20px;
+}
+
+.deleteaccountholder{
+    margin-top: 40px;
+    margin-bottom: 80px;
+}
+
+
+.removenetworkbtn{
+    text-decoration: none;
+    background: var(--gray);
+    padding: 10px;
+    border-radius: 15px;
+    color: #1f1f1f;
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.deleteaccount{
+    background: #e32424;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-left: 100px;
+    border-radius: 15px;
+    text-decoration: none;
+    color: #1f1f1f;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.deleteaccount:hover{
+    background: #e04141;
+    padding: 11px;
+    color: black;
+}
+
+.networkspopup{
+    font-size: 20px;
+    color: var(--blue);
+    margin-top: 50px;
+}
+
+.networkholderpopup{
+    margin-left: 20px;
+}
+
+.networktypepopup{
+    color: black;
+    font-weight: normal;
+
+}
+
+.discriptionpopup{
+    font-size: 17px;
+    margin-bottom: 15px;
+}
+
+.confirmdeletetextpopup{
+    font-size: 19px;
+    font-weight: bold;
+
+}
+
+.netholder .networks{
+    
+    font-size: 20px;
+    color: var(--blue);
+}
+
+.netholder .discription{
+    font-size: 17px;
+    color: black;
+}
+
+.netholder .networktype{
+    color: black;
+    font-weight: normal;
+}
+
+.netholder{
+    padding: 20px;
+}
+
+.lineup{
+    margin-top: 20px;
+    margin-right: 10px;
+    margin-left: 5px;
+    border-bottom: 1px solid #ccc;
+    display: block;
 }

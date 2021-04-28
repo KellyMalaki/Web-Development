@@ -21,8 +21,7 @@ if(isset($_GET["error"])){
 
         <input type="submit" name="loginbutton" value="Login"><br>
     </form>
-    <a class = "newaccount" href="#">Create New Account</a>
-    <a class = "crtnetwork" href="#">Create a Network</a>
+    <a class = "newaccount" href="signin.php">Create New Account</a>
 </div>
 <p class="discript">Connect and share ideas with people in the same network.</p>
 <script>login();</script>

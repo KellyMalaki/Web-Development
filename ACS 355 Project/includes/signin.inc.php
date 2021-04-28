@@ -10,32 +10,37 @@ require_once "dbh.inc.php";
 require_once "functions.inc.php";
 
 if(emptyInputSignup($name, $phone, $password1, $password2) !== false){
-    header("Location: ../php/signin.php?error=emptyinput");
+    header("Location: ../php/signin.php?error=emptyinput&name=".$name."&phone=".$phone."&email=".$email);
     exit();
 }
 
 if(invalidPhone($phone) !== false){
-    header("Location: ../php/signin.php?error=invalidphone");
+    header("Location: ../php/signin.php?error=invalidphone&name=".$name."&phone=".$phone."&email=".$email);
     exit();
 }
 
 if(invalidEmail($email) !== false){
-    header("Location: ../php/signin.php?error=invalidEmail");
+    header("Location: ../php/signin.php?error=invalidEmail&name=".$name."&phone=".$phone."&email=".$email);
     exit();
 }
 
 if(pwdmatch($password1, $password2) !== false){
-    header("Location: ../php/signin.php?error=pwddontmatch");
+    header("Location: ../php/signin.php?error=pwddontmatch&name=".$name."&phone=".$phone."&email=".$email);
     exit();
 }
 
 if(phoneExists($conn, $phone) !== false){
-    header("Location: ../php/signin.php?error=phoneExists");
+    header("Location: ../php/signin.php?error=phoneExists&name=".$name."&phone=".$phone."&email=".$email);
+    exit();
+}
+
+if(emailExists($conn, $email) !== false){
+    header("Location: ../php/signin.php?error=emailExists&name=".$name."&phone=".$phone."&email=".$email);
     exit();
 }
 
 if(pwdShort($password1) !== false){
-    header("Location: ../php/signin.php?error=pwdshort");
+    header("Location: ../php/signin.php?error=pwdshort&name=".$name."&phone=".$phone."&email=".$email);
     exit();
 }
 

@@ -18,7 +18,6 @@ session_start();
                 <li id="home" class="current"><a href="index.php">Home</a></li>
                 <li id="login"><a href="login.php ">Login</a></li>
                 <li id="signin"><a href="signin.php">Sign up</a></li>
-                <li id="network"><a href="network.php">Create Network</a></li>
             </ul>
         </nav>
 </div>

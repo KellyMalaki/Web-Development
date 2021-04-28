@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <! Modal Section 8:41pm 4/7>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Umoja</title>
+</head>
+<body>
+    <link rel="stylesheet" type="text/css" href="../css/stylehomepage.css">
+<div class="navbar">
+        <nav>
+            <ul class="primary-nav">
+                <li id="home" class="current"><a href="#">No networks</a></li>
+                <li id="userprofile"><a href="#">User Profile</a></li>
+                <li id="discussions"><a href="#">My discussions</a></li>
+                <li id="networks"><a href="hpnetworks.php?pos=networks">Networks</a></li>
+                <li id="logout"><a href="../includes/logout.inc.php">Log out</a></li>
+            </ul>
+        </nav>
+</div><br>
+<div class="bodyholder">
+<p class="welcomeuser">Mary</p>
+<div class="userdetailsdiv">
+    <form action="#" method="POST"><br>
+        <table>
+            <tr><td><span class="upformlabels">Name : </span></td>
+        <td><input class="upforminputtext" type="text" name="upname" id="upname" value="Kelly Malaki"></td></tr>
+        <tr><td><span class="upformlabels">Phone Number : </span></td>
+        <td><input class="upforminputtext" type="text" name="phone" id="phone" value="0712562332"></td></tr>
+        <tr><td><span class="upformlabels">Email : </span></td>
+            <td><input class="upforminputtext" type="text" name="email" id="email" value="kellymalaki@gmail.com"></td></tr>
+            <tr><td><input class="upformsubmit" type="submit" value="Update Account"></td></tr>
+    </table>
+    </form>
+
+    <span class="line"></span>
+
+    <h1 class="mynetworkstag">My Networks</h1>
+
+
+    <! Repeat starts here>
+    <div class="mynetworks">
+
+<button onclick="temp()">The Soviet Union</button>
+
+    <a class="networkclickable" onclick="temp(); return false;" href="javascript:temp()">
+        <p class="networks"> Math class <span class="networktype"> - Class type</span></p>
+        <p class="discription">Class description</p></a>
+        <span class="line"></span>
+    </div>
+
+    <div class="mynetworks"></div>
+
+    <a class="networkclickable" href="#">
+        <p class="networks"> Math class <span class="networktype"> - Class type</span></p>
+        <p class="discription">Class description</p></a>
+        <span class="line"></span>
+    </div>
+
+
+    <! Repeat stops here>
+    
+</div>
+
+
+    <td>
+    </td>
+
+
+
+</div>
+<div class="deleteaccountholder">
+<a href="#" id="deleteaccount" class="deleteaccount">DELETE ACCOUNT</a>
+</div>
+
+<! Modal Section>
+
+<div class="bg-modal">
+<div class="modal-content">
+    <div class="popupclose">+</div>
+    <div class="networkholderpopup">
+    <p class="networkspopup"> Math class <span class="networktypepopup"> - Class type</span></p>
+        <p class="discriptionpopup">Class description</p>
+    <p class="confirmdeletetextpopup">Are you sure you want to delete the account?</p>
+    <a href="#" class="deleteaccount">YES</a>
+
+    </div>
+
+</div>
+</div>
+
+
+<div class="bg-modal2">
+    <div class="modal-content2">
+        <div class="popupclose2">+</div>
+        <div class="networkholderpopup2">
+            <form action="#" method="POST"><br>
+                <table>
+                    <tr><td><span class="upformlabels">Name : </span></td>
+                <td><input class="upforminputtext" type="text" name="upname" id="upname" value="Kelly Malaki"></td></tr>
+                <tr><td><span class="upformlabels">Phone Number : </span></td>
+                <td><input class="upforminputtext" type="text" name="phone" id="phone" value="0712562332"></td></tr>
+                <tr><td><span class="upformlabels">Email : </span></td>
+                    <td><input class="upforminputtext" type="text" name="email" id="email" value="kellymalaki@gmail.com"></td></tr>
+                    <tr><td><P>Update Account?</P></td></tr>
+                    <tr><td><input class="upformsubmit" type="submit" value="Confirm"></td></tr>
+            </table>
+            </form>
+
+        </div>
+    
+    </div>
+    </div>
+
+    <script src="../javascript/hpuserprofilepopup.js"></script>
+
+

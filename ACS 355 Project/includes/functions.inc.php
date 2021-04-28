@@ -66,6 +66,31 @@ function phoneExists($conn, $phone){
     mysqli_stmt_close($stmt);
 }
 
+function emailExists($conn, $email){
+    if($email){
+    $sql = "SELECT * FROM users WHERE usersEmail= ?;";
+    $stmt = mysqli_stmt_init($conn);
+
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+        header("location: ../php/signin.php?error=stmtfailed");
+        exit();
+    }
+    mysqli_stmt_bind_param($stmt, "s", $email);
+    mysqli_stmt_execute($stmt);
+    $resultData = mysqli_stmt_get_result($stmt);
+    if($row = mysqli_fetch_assoc($resultData)){
+        return $row;
+    }else{
+        $result = false;
+        
+    }
+    mysqli_stmt_close($stmt);
+    return $result;
+}
+$result = false;
+return $result;
+}
+
 function pwdShort($password1){
     $result;
     if(strlen($password1)<6){
@@ -93,22 +118,27 @@ function createUser($conn, $name, $phone, $email, $password1){
 
 
     $userexists1;
-    $sql = "SELECT usersId FROM users WHERE usersPhonenumber=?;";
-    $stmt = mysqli_stmt_init($conn);
+    $sql5 = "SELECT usersId FROM users WHERE usersPhonenumber=?;";
+    $stmt5 = mysqli_stmt_init($conn);
 
-    mysqli_stmt_bind_param($stmt, "s", $phone);
-    mysqli_stmt_execute($stmt);
-    $resultData = mysqli_stmt_get_result($stmt);
+    if(!mysqli_stmt_prepare($stmt5, $sql5)){
+        header("location: ../php/signin.php?error=stmtfailed");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt5, "s", $phone);
+    mysqli_stmt_execute($stmt5);
+    $resultData = mysqli_stmt_get_result($stmt5);
     if($row = mysqli_fetch_assoc($resultData)){
         $userexists1= $row;
     }else{
         $userexists1 = false;
     }
-    mysqli_stmt_close($stmt);
+    mysqli_stmt_close($stmt5);
 
     session_start();
     $_SESSION["usersId"] = $userexists1["usersId"];
-    header("location: ../php/homepage.php");
+    header("location: ../php/homepage.php?pos=homepage");
         exit();
 }
 
@@ -154,14 +184,14 @@ function loginUser($conn, $phone, $password){
     } else if($checkPwd === true){
         session_start();
         $_SESSION["usersId"] = $userexists["usersId"];
-        header("location: ../php/homepage.php");
+        header("location: ../php/homepage.php?pos=homepage");
         exit();
     }
 }
 
-function emptyInputNetwork($netname, $description, $password1, $password2){
+function emptyInputNetwork($netname, $description){
     $result;
-    if(empty($netname) || empty($description)|| empty($password1)|| empty($password2)){
+    if(empty($netname) || empty($description)){
     $result = true;
     }else{
     $result = false;
@@ -169,8 +199,28 @@ function emptyInputNetwork($netname, $description, $password1, $password2){
     return $result;
 }
 
-function createNetwork($conn, $netname, $type, $privacy, $description, $password1){
-    $sql = "INSERT INTO networks (NetworksName, NetworksType, NetworksPrivacy, Networksdescription, NetworksPwd) VALUES (?, ?, ?, ?, ?);";
+function checknetworkname($conn, $netname){
+    $sql = "SELECT NetworksId FROM networks WHERE NetworksName= ?;";
+    $stmt = mysqli_stmt_init($conn);
+
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+        header("location: ../php/hpcreatenetwork.php?error=stmtfailed");
+        exit();
+    }
+    mysqli_stmt_bind_param($stmt, "s", $netname);
+    mysqli_stmt_execute($stmt);
+    $resultData = mysqli_stmt_get_result($stmt);
+    if(mysqli_fetch_assoc($resultData)){
+        $result = true;
+    }else{
+        $result = false;
+    }
+    mysqli_stmt_close($stmt);
+    return $result;
+}
+
+function createNetwork($conn, $netname, $type, $privacy, $description){
+    $sql = "INSERT INTO networks (NetworksName, NetworksType, NetworksPrivacy, Networksdescription) VALUES (?, ?, ?, ?);";
     $stmt = mysqli_stmt_init($conn);
 
     if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -178,13 +228,56 @@ function createNetwork($conn, $netname, $type, $privacy, $description, $password
         exit();
     }
 
-    $hashedpwd = password_hash($password1, PASSWORD_DEFAULT);
-    mysqli_stmt_bind_param($stmt, "sssss", $netname, $type, $privacy, $description, $hashedpwd);
+    mysqli_stmt_bind_param($stmt, "ssss", $netname, $type, $privacy, $description);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    header("location: ../php/addusers.php?id=one");
-    session_start();
+    //Find Network ID
+
+
+
+    $sql5 = "SELECT NetworksId FROM networks WHERE NetworksName= ?;";
+    $stmt5 = mysqli_stmt_init($conn);
+
+    if(!mysqli_stmt_prepare($stmt5, $sql5)){
+        header("location: ../php/hpcreatenetwork.php?error=stmtfailed");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt5, "s", $netname);
+    mysqli_stmt_execute($stmt5);
+    $resultData = mysqli_stmt_get_result($stmt5);
+    if($row = mysqli_fetch_assoc($resultData)){
+
+        $thenetID=$row['NetworksId'];
+    }
+    mysqli_stmt_close($stmt5);
+
+
+///  Add user after finding network ID.
+    $netid =$thenetID;
+    echo $netid;
+        $userid = $_SESSION["usersId"];
+        $sql3 = "INSERT INTO networkusers (usersId, NetworksId, userstate) VALUES (?, ?, ?);";
+        $stmt3 = mysqli_stmt_init($conn);
+    
+        if(!mysqli_stmt_prepare($stmt3, $sql3)){
+            header("location: ../php/homepage.php?error=stmtfailed");
+            exit();
+        }
+     
+        
+         $userstate = "admin";
+         echo $userid, $netid, $userstate;
+        mysqli_stmt_bind_param($stmt3, "sss", $userid , $netid, $userstate);
+        mysqli_stmt_execute($stmt3);
+        mysqli_stmt_close($stmt3);
+
+    //Add user ends here
+
+
+    
     $_SESSION['netname']= $netname;
+    header("location: ../php/managenetworks.php");
     exit();
 }
 
@@ -199,11 +292,6 @@ function emptyadmin($admin){
 }
 
 function addoneuser($conn, $one){
-       $moja = 1;
-        $mbili = 3;
-        $tatu = "admin";
-
-    
         $userexists;
         $sql = "SELECT * FROM users WHERE usersName=?;";
         $stmt = mysqli_stmt_init($conn);
@@ -270,6 +358,7 @@ if($admin3){
 function sendmessage($conn, $themessage){
     //$sql = "INSERT INTO messages(usersId, NetworksId , themessage ) VALUES (?, ?, ?);";
     session_start();
+    if($_SESSION["NetworksId"]){
     $a= $_SESSION["NetworksId"];
     $b = $_SESSION["usersId"];
     $query = "insert into messages (usersId, NetworksId , themessage) values ('$b', '$a', '$themessage')";
@@ -288,4 +377,100 @@ function sendmessage($conn, $themessage){
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);*/
     header("location: ../php/homepage.php?message=sent");
+}else{
+    header("location: ../php/homepage.php?message=nonetwork");
+}
+}
+
+function emptyInputSignup2($name, $phone){
+    $result;
+    if(empty($name) || empty($phone)){
+    $result = true;
+    }else{
+    $result = false;
+    }
+    return $result;
+}
+
+function phoneExists2($conn, $phone){
+    $sql = "SELECT * FROM users WHERE usersPhonenumber= ? AND usersId != ?;";
+    $stmt = mysqli_stmt_init($conn);
+    $userid = $_SESSION['usersId'];
+
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+        header("location: ../php/signin.php?error=stmtfailed");
+        exit();
+    }
+    mysqli_stmt_bind_param($stmt, "ss", $phone, $userid);
+    mysqli_stmt_execute($stmt);
+    $resultData = mysqli_stmt_get_result($stmt);
+    if($row = mysqli_fetch_assoc($resultData)){
+        return $row;
+    }else{
+        $result = false;
+        return $result;
+    }
+    mysqli_stmt_close($stmt);
+}
+
+function emailExists2($conn, $email){
+    if($email){
+    $sql = "SELECT * FROM users WHERE usersEmail= ? AND usersId != ?;";
+    $stmt = mysqli_stmt_init($conn);
+    $userid = $_SESSION['usersId'];
+
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+        header("location: ../php/signin.php?error=stmtfailed");
+        exit();
+    }
+    mysqli_stmt_bind_param($stmt, "ss", $email, $userid);
+    mysqli_stmt_execute($stmt);
+    $resultData = mysqli_stmt_get_result($stmt);
+    if($row = mysqli_fetch_assoc($resultData)){
+        return $row;
+    }else{
+        $result = false;
+        
+    }
+    mysqli_stmt_close($stmt);
+    return $result;
+}
+$result = false;
+return $result;
+}
+
+function uupdateuserdetails($conn, $name, $phone, $email, $userid){
+
+    if(!$email == ''){
+        $sql1 = "UPDATE users SET usersName = ?, usersPhonenumber= ?, usersEmail = ? WHERE usersId = ?;";
+        $stmt = mysqli_stmt_init($conn);
+    
+        if(!mysqli_stmt_prepare($stmt, $sql1)){
+            header("location: ../php/hpuserprofile.php?error=stmtfailed");
+            exit();
+        }
+    
+        mysqli_stmt_bind_param($stmt, "ssss", $name, $phone, $email, $userid);
+        mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    header("location: ../php/hpuserprofile.php");
+    exit();
+
+    }else{
+        $sql4 = "UPDATE users SET usersName = ?, usersPhonenumber= ? WHERE usersId = ?;";
+    $stmt6 = mysqli_stmt_init($conn);
+
+    if(!mysqli_stmt_prepare($stmt6, $sql4)){
+        header("location: ../php/hpuserprofile.php?error=stmtfailed");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt6, "sss", $name, $phone, $userid);
+    mysqli_stmt_execute($stmt6);
+    mysqli_stmt_close($stmt6);
+    header("location: ../php/hpuserprofile.php?error=accountupdated");
+    exit();
+    }
+    
+    
 }
